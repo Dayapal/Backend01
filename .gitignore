@@ -1,0 +1,20 @@
+# Node.js
+node_modules/
+.env
+*.log
+
+# Build
+dist/
+build/
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Specific file
+secrets.json
+
+# Ignore everything in "uploads" folder
+uploads/
