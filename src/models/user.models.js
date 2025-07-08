@@ -4,13 +4,14 @@ import bcrypt from 'bcrypt'
 import mongoose, { Schema } from "mongoose";
 
 const userSchema = new Schema({
-    userName: {
+    username: {
         type: String,
         required: true,
         lowercase: true,
         trim: true,
         unique: true,
-        index: true
+        index : true
+       
     },
 
     email: {
@@ -21,19 +22,19 @@ const userSchema = new Schema({
         unique: true,
 
     },
-    fullname: {
+    fullName: {
         type: String,
         required: true,
         trim: true,
         index: true
     },
 
-    avtar: {
+    avatar: {
         type: String,
         required: true,
 
     },
-    converImage: {
+    coverImage: {
         type: String,
         required: true,
 
@@ -60,8 +61,8 @@ const userSchema = new Schema({
 
 
 userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next
-    this.password =  await bcrypt.hash(this.password, 10)
+    if (!this.isModified('password')) return next()
+    this.password = await bcrypt.hash(this.password, 10);
     next()
 })
 
@@ -75,8 +76,8 @@ userSchema.methods.generateAccessToken = function () {
         {
             _id: this._id,
             email: this.email,
-            username: this.userName,
-            fullname: this.fullname
+            username: this.username,
+            fullName: this.fullName
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
@@ -89,7 +90,7 @@ userSchema.methods.generateAccessToken = function () {
 userSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         {
-            _id: this._id, 
+            _id: this._id,
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
