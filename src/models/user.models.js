@@ -11,6 +11,8 @@ const userSchema = new Schema({
         trim: true,
         unique: true,
         index : true
+
+        
        
     },
 
