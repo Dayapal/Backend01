@@ -432,7 +432,7 @@ const getWatchHistory = asyncHandler(async (req, res) => {
         .json(
             200,
             user[0].watchHistory,
-            "Watch History fetched successfully"
+            "Watch History fetched successfully!"
         )
 })
 
