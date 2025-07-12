@@ -4,7 +4,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { User } from '../models/user.models.js';
 import { uploadCloudinary } from '../utils/cloudinary.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 
 const generateAccessTokenAndRefreshToken = async (userId) => {
@@ -28,7 +28,7 @@ const generateAccessTokenAndRefreshToken = async (userId) => {
 
 const registerUser = asyncHandler(async (req, res) => {
     const { fullName, email, username, password } = req.body
-    console.log('email', email)
+    console.log('email', email, fullName)
 
     if (
 
