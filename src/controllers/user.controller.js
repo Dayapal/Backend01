@@ -164,6 +164,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 const requestAccessToken = asyncHandler(async (req, res) => {
 
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken;
+    
     if (!incomingRefreshToken) {
         throw new ApiError(401, "unauthorized request ")
     };
@@ -319,7 +320,8 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 
 const getUserProfileChannel = asyncHandler(async (req, res) => {
 
-    const { username } = req.params
+    const { username } = req.params;
+    
     if (!username?.trim()) {
         throw new ApiError(400, "user name is missing ")
     }
